@@ -1,0 +1,86 @@
+tileset(7,7).
+edge_type(grass ; city ; road).
+
+inst_id(0..48).
+
+% Tile type instances. These don't account for rotation.
+% Don't worry, these were auto-generated. :)
+tile_inst(0,grass,grass,grass,grass).
+tile_inst(1,grass,city,grass,grass).
+tile_inst(2,road,road,grass,grass).
+tile_inst(3,city,grass,grass,grass).
+tile_inst(4,city,city,grass,grass).
+tile_inst(5,grass,road,road,grass).
+tile_inst(6,road,grass,road,grass).
+tile_inst(7,road,road,road,grass).
+tile_inst(8,road,city,road,grass).
+tile_inst(9,city,road,road,grass).
+tile_inst(10,grass,grass,city,grass).
+tile_inst(11,grass,city,city,grass).
+tile_inst(12,road,road,city,grass).
+tile_inst(13,city,grass,city,grass).
+tile_inst(14,city,city,city,grass).
+tile_inst(15,grass,road,grass,road).
+tile_inst(16,road,grass,grass,road).
+tile_inst(17,road,road,grass,road).
+tile_inst(18,road,city,grass,road).
+tile_inst(19,city,road,grass,road).
+tile_inst(20,grass,grass,road,road).
+tile_inst(21,grass,road,road,road).
+tile_inst(22,grass,city,road,road).
+tile_inst(23,road,grass,road,road).
+tile_inst(24,road,road,road,road).
+tile_inst(25,road,city,road,road).
+tile_inst(26,city,grass,road,road).
+tile_inst(27,city,road,road,road).
+tile_inst(28,city,city,road,road).
+tile_inst(29,grass,road,city,road).
+tile_inst(30,road,grass,city,road).
+tile_inst(31,road,road,city,road).
+tile_inst(32,road,city,city,road).
+tile_inst(33,city,road,city,road).
+tile_inst(34,grass,grass,grass,city).
+tile_inst(35,grass,city,grass,city).
+tile_inst(36,road,road,grass,city).
+tile_inst(37,city,grass,grass,city).
+tile_inst(38,city,city,grass,city).
+tile_inst(39,grass,road,road,city).
+tile_inst(40,road,grass,road,city).
+tile_inst(41,road,road,road,city).
+tile_inst(42,road,city,road,city).
+tile_inst(43,city,road,road,city).
+tile_inst(44,grass,grass,city,city).
+tile_inst(45,grass,city,city,city).
+tile_inst(46,road,road,city,city).
+tile_inst(47,city,grass,city,city).
+tile_inst(48,city,city,city,city).
+
+id(0..18).
+
+% These are the distinct tile types.
+% IDs based on the ordering in:
+% http://en.wikipedia.org/wiki/File:CarcassonneTiles.svg
+tile_type(0,city,grass,grass,city).
+tile_type(1,city,road,road,road).
+tile_type(2,city,city,grass,grass).
+tile_type(3,grass,grass,grass,grass).
+tile_type(4,grass,road,grass,grass).
+tile_type(5,road,road,road,road).
+tile_type(6,grass,road,road,grass).
+tile_type(7,road,road,grass,grass).
+tile_type(8,grass,road,road,road).
+tile_type(9,city,city,city,city).
+tile_type(10,city,grass,city,city).
+tile_type(11,city,road,city,city).
+tile_type(12,city,grass,city,grass).
+tile_type(13,city,grass,grass,grass).
+tile_type(14,city,grass,road,road).
+tile_type(15,city,road,road,grass).
+tile_type(16,city,road,grass,road).
+tile_type(17,grass,grass,city,city).
+tile_type(18,city,road,road,city).
+
+% Handle rotations of each distinct tile type.
+tile_type(X,L,R,T,B) :- tile_type(X,T,B,L,R), id(X).
+tile_type(X,L,R,T,B) :- tile_type(X,R,L,B,T), id(X).
+tile_type(X,L,R,T,B) :- tile_type(X,B,T,R,L), id(X).
