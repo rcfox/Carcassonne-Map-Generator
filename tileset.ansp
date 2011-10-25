@@ -1,0 +1,12 @@
+edge_type(grass ; city ; road).
+
+1 { tile(Left,Right,Top,Bottom) : edge_type(Left;Right;Top;Bottom) } 1.
+
+% Reject any tiles with only one road edge.
+:- tile(L,R,T,B), X = road, L == X, R != X, T != X, B != X.
+:- tile(L,R,T,B), X = road, L != X, R == X, T != X, B != X.
+:- tile(L,R,T,B), X = road, L != X, R != X, T == X, B != X.
+:- tile(L,R,T,B), X = road, L != X, R != X, T != X, B == X.
+
+#hide.
+#show tile/4.
